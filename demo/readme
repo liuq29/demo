@@ -1,1 +1,24 @@
-dffjsdkfjdsfjdskfjkldsf呵呵付款的身份了
+
+<ruleset name="Custom Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+                             http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>Custom ruleset to detect unused methods, both public and private.</description>
+
+    <!-- Include the default best practices rules -->
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod"/>
+
+    <!-- Add a custom rule for public method detection -->
+    <rule name="UnusedPublicMethod"
+          language="java"
+          message="This public method is never used."
+          class="net.sourceforge.pmd.lang.rule.AbstractJavaRule">
+        <description>Detects unused public methods.</description>
+        <priority>3</priority>
+        <properties>
+            <property name="accessModifier" value="public"/>
+        </properties>
+    </rule>
+</ruleset>
